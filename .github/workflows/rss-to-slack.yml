@@ -34,6 +34,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Generate filtered RSS feed
+        env:
+          BARK_KEY: ${{ secrets.BARK_KEY }}
         run: |
           ARGS=""
           if [ "${{ github.event.inputs.test }}" = "true" ]; then

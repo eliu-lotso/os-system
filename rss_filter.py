@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 """Fetch Apple Developer Releases RSS, filter by keywords, and generate a filtered RSS feed."""
 
+import os
 import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
+from urllib.parse import quote_plus
 from xml.dom import minidom
+from xml.etree import ElementTree
 
 import feedparser
+import requests
 import yaml
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -216,6 +220,48 @@ def build_rss_xml(entries: list, test_mode: bool = False) -> str:
     return doc.toprettyxml(indent="  ")
 
 
+def get_existing_guids() -> set:
+    """Read the previous feed.xml and extract all guid values."""
+    if not OUTPUT_PATH.exists():
+        return set()
+    try:
+        tree = ElementTree.parse(OUTPUT_PATH)
+        return {g.text for g in tree.iter("guid") if g.text}
+    except Exception:
+        return set()
+
+
+def send_bark(title: str, body: str):
+    bark_key = os.getenv("BARK_KEY")
+    if not bark_key:
+        print("[BARK] No BARK_KEY set, skipping push.")
+        return
+    url = f"https://api.day.app/{bark_key}/{quote_plus(title)}/{quote_plus(body)}"
+    try:
+        r = requests.get(url, params={"group": "Apple OS", "icon": "https://developer.apple.com/favicon.ico"}, timeout=10)
+        r.raise_for_status()
+        print("[BARK] Push sent successfully.")
+    except Exception as e:
+        print(f"[BARK] Push failed: {e}")
+
+
+def build_bark_summary(entries: list) -> tuple:
+    """Build a concise BARK notification from a list of entries."""
+    lines = []
+    for entry in entries:
+        raw_title = entry.get("title", "")
+        info = parse_title(raw_title)
+        if info:
+            tag = info["pre_label"] if info["is_beta"] else ""
+            release = "测试版" if info["is_beta"] else "正式版"
+            lines.append(f"{info['emoji']} {info['os']} {info['version']}{tag} {release}")
+        else:
+            lines.append(raw_title)
+    title = f"\U0001f34e Apple OS 更新 ({len(entries)})"
+    body = "\n".join(lines)
+    return title, body
+
+
 def main():
     import argparse
 
@@ -225,6 +271,8 @@ def main():
         help="Generate unique guids so Slack treats all items as new (for testing)",
     )
     args = parser.parse_args()
+
+    old_guids = get_existing_guids()
 
     config = load_config()
     all_entries = []
@@ -242,6 +290,23 @@ def main():
 
     mode = " (TEST MODE)" if args.test else ""
     print(f"Generated {OUTPUT_PATH} with {len(all_entries)} item(s).{mode}")
+
+    new_guids = {entry.get("id") or entry.get("link", "") for entry in all_entries}
+    truly_new = [
+        e for e in all_entries
+        if (e.get("id") or e.get("link", "")) not in old_guids
+    ]
+
+    if truly_new:
+        print(f"  {len(truly_new)} new item(s) detected, sending BARK push.")
+        title, body = build_bark_summary(truly_new)
+        send_bark(title, body)
+    elif args.test:
+        print("  Test mode: sending BARK push for all items.")
+        title, body = build_bark_summary(all_entries)
+        send_bark(title, body)
+    else:
+        print("  No new items, skipping BARK push.")
 
 
 if __name__ == "__main__":
