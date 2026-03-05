@@ -132,7 +132,7 @@ def format_pub_date_short(entry) -> str:
     return ""
 
 
-def build_rss_xml(feed_meta, entries: list) -> ElementTree:
+def build_rss_xml(feed_meta, entries: list, test_mode: bool = False) -> ElementTree:
     rss = Element("rss", version="2.0")
     rss.set("xmlns:atom", "http://www.w3.org/2005/Atom")
 
@@ -153,7 +153,11 @@ def build_rss_xml(feed_meta, entries: list) -> ElementTree:
 
         item = SubElement(channel, "item")
         SubElement(item, "link").text = entry.get("link", "")
-        SubElement(item, "guid").text = entry.get("id") or entry.get("link", "")
+        guid = entry.get("id") or entry.get("link", "")
+        if test_mode:
+            test_ts = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
+            guid = f"{guid}#test-{test_ts}"
+        SubElement(item, "guid").text = guid
         SubElement(item, "pubDate").text = entry.get("published", "")
 
         if info:
@@ -167,6 +171,15 @@ def build_rss_xml(feed_meta, entries: list) -> ElementTree:
 
 
 def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Apple RSS filter")
+    parser.add_argument(
+        "--test", action="store_true",
+        help="Generate unique guids so Slack treats all items as new (for testing)",
+    )
+    args = parser.parse_args()
+
     config = load_config()
     all_entries = []
 
@@ -177,10 +190,11 @@ def main():
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    tree = build_rss_xml({}, all_entries)
+    tree = build_rss_xml({}, all_entries, test_mode=args.test)
     tree.write(OUTPUT_PATH, encoding="unicode", xml_declaration=True)
 
-    print(f"Generated {OUTPUT_PATH} with {len(all_entries)} item(s).")
+    mode = " (TEST MODE - unique guids)" if args.test else ""
+    print(f"Generated {OUTPUT_PATH} with {len(all_entries)} item(s).{mode}")
 
 
 if __name__ == "__main__":

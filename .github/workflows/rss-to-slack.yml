@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: '*/15 * * * *'
   workflow_dispatch:
+    inputs:
+      test:
+        description: 'Test mode: force Slack to re-push all items'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
 
 permissions:
   contents: write
@@ -25,7 +34,12 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Generate filtered RSS feed
-        run: python rss_filter.py
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.test }}" = "true" ]; then
+            ARGS="--test"
+          fi
+          python rss_filter.py $ARGS
 
       - name: Commit and push updated feed
         run: |
