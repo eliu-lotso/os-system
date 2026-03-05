@@ -1,0 +1,9 @@
+feeds:
+  - name: "Apple Developer Releases"
+    url: "https://developer.apple.com/news/releases/rss/releases.rss"
+    filters:
+      keywords:
+        - "iOS"
+        - "macOS"
+        - "iPadOS"
+        - "watchOS"
