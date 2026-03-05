@@ -14,6 +14,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 CONFIG_PATH = SCRIPT_DIR / "feeds.yml"
 OUTPUT_DIR = SCRIPT_DIR / "docs"
 OUTPUT_PATH = OUTPUT_DIR / "feed.xml"
+FEED_URL = "https://eliu-lotso.github.io/os-system/feed.xml"
 
 
 def load_config():
@@ -138,11 +139,14 @@ def build_rss_xml(feed_meta, entries: list, test_mode: bool = False) -> ElementT
 
     channel = SubElement(rss, "channel")
     SubElement(channel, "title").text = "\U0001f34e Apple OS Releases"
-    SubElement(channel, "link").text = "https://developer.apple.com/news/releases/"
+    SubElement(channel, "link").text = FEED_URL
     SubElement(channel, "description").text = (
         "iOS, macOS, iPadOS, watchOS — 正式版与测试版更新推送"
     )
-    SubElement(channel, "language").text = "en-US"
+    atom_link = SubElement(channel, "atom:link")
+    atom_link.set("href", FEED_URL)
+    atom_link.set("rel", "self")
+    atom_link.set("type", "application/rss+xml")
     SubElement(channel, "lastBuildDate").text = datetime.now(timezone.utc).strftime(
         "%a, %d %b %Y %H:%M:%S GMT"
     )
@@ -153,18 +157,24 @@ def build_rss_xml(feed_meta, entries: list, test_mode: bool = False) -> ElementT
 
         item = SubElement(channel, "item")
         SubElement(item, "link").text = entry.get("link", "")
-        guid = entry.get("id") or entry.get("link", "")
+
+        guid_value = entry.get("id") or entry.get("link", "")
         if test_mode:
             test_ts = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
-            guid = f"{guid}#test-{test_ts}"
-        SubElement(item, "guid").text = guid
+            guid_value = f"test-{test_ts}-{guid_value}"
+        guid_el = SubElement(item, "guid")
+        guid_el.text = guid_value
+        guid_el.set("isPermaLink", "false")
+
         SubElement(item, "pubDate").text = entry.get("published", "")
 
         if info:
             pub_date = format_pub_date_short(entry)
             SubElement(item, "title").text = format_title(info, pub_date)
+            SubElement(item, "description").text = format_title(info, pub_date)
         else:
             SubElement(item, "title").text = raw_title
+            SubElement(item, "description").text = raw_title
 
     indent(rss, space="  ")
     return ElementTree(rss)
