@@ -6,46 +6,10 @@
     <description>iOS, macOS, iPadOS, watchOS — 正式版与测试版更新推送</description>
     <atom:link href="https://eliu-lotso.github.io/os-system/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>iOS 26.3.1 | 正式版</title>
-      <pubDate>Thu, 05 Mar 2026 19:47:24 GMT</pubDate>
-      <guid isPermaLink="false">test-20260305T194724-https://developer.apple.com/news/releases/?id=03042026a</guid>
-      <description><![CDATA[iOS 26.3.1 | 正式版]]></description>
-    </item>
-    <item>
-      <title>iPadOS 26.3.1 | 正式版</title>
-      <pubDate>Thu, 05 Mar 2026 19:47:24 GMT</pubDate>
-      <guid isPermaLink="false">test-20260305T194724-https://developer.apple.com/news/releases/?id=03042026b</guid>
-      <description><![CDATA[iPadOS 26.3.1 | 正式版]]></description>
-    </item>
-    <item>
-      <title>macOS 26.3.1 | 正式版</title>
-      <pubDate>Thu, 05 Mar 2026 19:47:24 GMT</pubDate>
-      <guid isPermaLink="false">test-20260305T194724-https://developer.apple.com/news/releases/?id=03042026c</guid>
-      <description><![CDATA[macOS 26.3.1 | 正式版]]></description>
-    </item>
-    <item>
-      <title>macOS 26.4 Beta 3 | 测试版</title>
-      <pubDate>Thu, 05 Mar 2026 19:47:24 GMT</pubDate>
-      <guid isPermaLink="false">test-20260305T194724-https://developer.apple.com/news/releases/?id=03032026a</guid>
-      <description><![CDATA[macOS 26.4 Beta 3 | 测试版]]></description>
-    </item>
-    <item>
-      <title>iOS 26.4 Beta 3 | 测试版</title>
-      <pubDate>Thu, 05 Mar 2026 19:47:24 GMT</pubDate>
-      <guid isPermaLink="false">test-20260305T194724-https://developer.apple.com/news/releases/?id=03022026a</guid>
-      <description><![CDATA[iOS 26.4 Beta 3 | 测试版]]></description>
-    </item>
-    <item>
-      <title>iPadOS 26.4 Beta 3 | 测试版</title>
-      <pubDate>Thu, 05 Mar 2026 19:47:24 GMT</pubDate>
-      <guid isPermaLink="false">test-20260305T194724-https://developer.apple.com/news/releases/?id=03022026b</guid>
-      <description><![CDATA[iPadOS 26.4 Beta 3 | 测试版]]></description>
-    </item>
-    <item>
-      <title>watchOS 26.4 Beta 3 | 测试版</title>
-      <pubDate>Thu, 05 Mar 2026 19:47:24 GMT</pubDate>
-      <guid isPermaLink="false">test-20260305T194724-https://developer.apple.com/news/releases/?id=03022026f</guid>
-      <description><![CDATA[watchOS 26.4 Beta 3 | 测试版]]></description>
+      <title>Apple OS (03-05 19:59)</title>
+      <pubDate>Thu, 05 Mar 2026 19:59:34 GMT</pubDate>
+      <guid isPermaLink="false">os-20260305T195934</guid>
+      <description><![CDATA[iOS 26.3.1 | 正式版 / iPadOS 26.3.1 | 正式版 / macOS 26.3.1 | 正式版 / macOS 26.4 Beta 3 | 测试版 / iOS 26.4 Beta 3 | 测试版 / iPadOS 26.4 Beta 3 | 测试版 / watchOS 26.4 Beta 3 | 测试版]]></description>
     </item>
   </channel>
 </rss>
