@@ -166,39 +166,34 @@ def build_rss_xml(entries: list, test_mode: bool = False) -> str:
     atom_link.setAttribute("type", "application/rss+xml")
     channel.appendChild(atom_link)
 
+    test_ts = now.strftime("%Y%m%dT%H%M%S")
+    pub_date_rfc = now.strftime("%a, %d %b %Y %H:%M:%S GMT")
+
+    lines = []
     for entry in entries:
         raw_title = entry.get("title", "")
         info = parse_title(raw_title)
-        pub_date_short = format_pub_date_short(entry)
-
         if info:
-            title_text = format_title_line(info)
+            lines.append(format_title_line(info))
         else:
-            title_text = raw_title
+            lines.append(raw_title)
 
-        item = doc.createElement("item")
-        item.appendChild(el("title", title_text))
+    summary = " / ".join(lines) if lines else "No updates"
 
-        if test_mode:
-            pub_date_rfc = now.strftime("%a, %d %b %Y %H:%M:%S GMT")
-        else:
-            pub_date_rfc = format_pub_date_gmt(entry)
-        item.appendChild(el("pubDate", pub_date_rfc))
+    item = doc.createElement("item")
+    item.appendChild(el("title", f"Apple OS ({now.strftime('%m-%d %H:%M')})"))
+    item.appendChild(el("pubDate", pub_date_rfc))
 
-        guid_value = entry.get("id") or entry.get("link", "")
-        if test_mode:
-            test_ts = now.strftime("%Y%m%dT%H%M%S")
-            guid_value = f"test-{test_ts}-{guid_value}"
-        guid_node = doc.createElement("guid")
-        guid_node.setAttribute("isPermaLink", "false")
-        guid_node.appendChild(doc.createTextNode(guid_value))
-        item.appendChild(guid_node)
+    guid_node = doc.createElement("guid")
+    guid_node.setAttribute("isPermaLink", "false")
+    guid_node.appendChild(doc.createTextNode(f"os-{test_ts}"))
+    item.appendChild(guid_node)
 
-        desc_node = doc.createElement("description")
-        desc_node.appendChild(doc.createCDATASection(title_text))
-        item.appendChild(desc_node)
+    desc_node = doc.createElement("description")
+    desc_node.appendChild(doc.createCDATASection(summary))
+    item.appendChild(desc_node)
 
-        channel.appendChild(item)
+    channel.appendChild(item)
 
     return doc.toprettyxml(indent="  ")
 
