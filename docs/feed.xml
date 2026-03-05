@@ -5,52 +5,52 @@
     <link>https://eliu-lotso.github.io/os-system/feed.xml</link>
     <description>iOS, macOS, iPadOS, watchOS — 正式版与测试版更新推送</description>
     <atom:link href="https://eliu-lotso.github.io/os-system/feed.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Thu, 05 Mar 2026 16:06:33 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2026 17:27:32 GMT</lastBuildDate>
     <item>
       <link>https://developer.apple.com/news/releases/?id=03042026a</link>
-      <guid isPermaLink="false">test-20260305160633-https://developer.apple.com/news/releases/?id=03042026a</guid>
+      <guid isPermaLink="false">https://developer.apple.com/news/releases/?id=03042026a</guid>
       <pubDate>Wed, 04 Mar 2026 09:00:00 PST</pubDate>
       <title>📱 iOS 26.3.1 | 📅 2026-03-04 | 🟢 正式版 | Build: 23D8133</title>
       <description>📱 iOS 26.3.1 | 📅 2026-03-04 | 🟢 正式版 | Build: 23D8133</description>
     </item>
     <item>
       <link>https://developer.apple.com/news/releases/?id=03042026b</link>
-      <guid isPermaLink="false">test-20260305160633-https://developer.apple.com/news/releases/?id=03042026b</guid>
+      <guid isPermaLink="false">https://developer.apple.com/news/releases/?id=03042026b</guid>
       <pubDate>Wed, 04 Mar 2026 09:00:00 PST</pubDate>
       <title>📲 iPadOS 26.3.1 | 📅 2026-03-04 | 🟢 正式版 | Build: 23D8133</title>
       <description>📲 iPadOS 26.3.1 | 📅 2026-03-04 | 🟢 正式版 | Build: 23D8133</description>
     </item>
     <item>
       <link>https://developer.apple.com/news/releases/?id=03042026c</link>
-      <guid isPermaLink="false">test-20260305160633-https://developer.apple.com/news/releases/?id=03042026c</guid>
+      <guid isPermaLink="false">https://developer.apple.com/news/releases/?id=03042026c</guid>
       <pubDate>Wed, 04 Mar 2026 09:00:00 PST</pubDate>
       <title>💻 macOS 26.3.1 | 📅 2026-03-04 | 🟢 正式版 | Build: 25D2128</title>
       <description>💻 macOS 26.3.1 | 📅 2026-03-04 | 🟢 正式版 | Build: 25D2128</description>
     </item>
     <item>
       <link>https://developer.apple.com/news/releases/?id=03032026a</link>
-      <guid isPermaLink="false">test-20260305160633-https://developer.apple.com/news/releases/?id=03032026a</guid>
+      <guid isPermaLink="false">https://developer.apple.com/news/releases/?id=03032026a</guid>
       <pubDate>Tue, 03 Mar 2026 09:00:00 PST</pubDate>
       <title>💻 macOS 26.4 Beta 3 | 📅 2026-03-03 | 🟡 测试版 | Build: 25E5223i</title>
       <description>💻 macOS 26.4 Beta 3 | 📅 2026-03-03 | 🟡 测试版 | Build: 25E5223i</description>
     </item>
     <item>
       <link>https://developer.apple.com/news/releases/?id=03022026a</link>
-      <guid isPermaLink="false">test-20260305160633-https://developer.apple.com/news/releases/?id=03022026a</guid>
+      <guid isPermaLink="false">https://developer.apple.com/news/releases/?id=03022026a</guid>
       <pubDate>Mon, 02 Mar 2026 09:00:00 PST</pubDate>
       <title>📱 iOS 26.4 Beta 3 | 📅 2026-03-02 | 🟡 测试版 | Build: 23E5223f</title>
       <description>📱 iOS 26.4 Beta 3 | 📅 2026-03-02 | 🟡 测试版 | Build: 23E5223f</description>
     </item>
     <item>
       <link>https://developer.apple.com/news/releases/?id=03022026b</link>
-      <guid isPermaLink="false">test-20260305160633-https://developer.apple.com/news/releases/?id=03022026b</guid>
+      <guid isPermaLink="false">https://developer.apple.com/news/releases/?id=03022026b</guid>
       <pubDate>Mon, 02 Mar 2026 09:00:00 PST</pubDate>
       <title>📲 iPadOS 26.4 Beta 3 | 📅 2026-03-02 | 🟡 测试版 | Build: 23E5223f</title>
       <description>📲 iPadOS 26.4 Beta 3 | 📅 2026-03-02 | 🟡 测试版 | Build: 23E5223f</description>
     </item>
     <item>
       <link>https://developer.apple.com/news/releases/?id=03022026f</link>
-      <guid isPermaLink="false">test-20260305160633-https://developer.apple.com/news/releases/?id=03022026f</guid>
+      <guid isPermaLink="false">https://developer.apple.com/news/releases/?id=03022026f</guid>
       <pubDate>Mon, 02 Mar 2026 09:00:00 PST</pubDate>
       <title>⌚ watchOS 26.4 Beta 3 | 📅 2026-03-02 | 🟡 测试版 | Build: 23T5226e</title>
       <description>⌚ watchOS 26.4 Beta 3 | 📅 2026-03-02 | 🟡 测试版 | Build: 23T5226e</description>
