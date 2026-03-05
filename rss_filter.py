@@ -108,15 +108,18 @@ def parse_title(title: str) -> Optional[dict]:
     }
 
 
-def format_title(info: dict, pub_date: str) -> str:
+def format_title_line(info: dict) -> str:
+    """Concise title for the clickable header in Slack."""
     tag = info["pre_label"] if info["is_beta"] else ""
     release_type = "\U0001f7e1 测试版" if info["is_beta"] else "\U0001f7e2 正式版"
-    parts = [
-        f"{info['emoji']} {info['os']} {info['version']}{tag}",
-    ]
+    return f"{info['emoji']} {info['os']} {info['version']}{tag} | {release_type}"
+
+
+def format_description_line(info: dict, pub_date: str) -> str:
+    """Supplementary details shown below the title in Slack."""
+    parts = []
     if pub_date:
         parts.append(f"\U0001f4c5 {pub_date}")
-    parts.append(release_type)
     parts.append(f"Build: {info['build']}")
     return " | ".join(parts)
 
@@ -172,16 +175,22 @@ def build_rss_xml(entries: list, test_mode: bool = False) -> str:
     for entry in entries:
         raw_title = entry.get("title", "")
         info = parse_title(raw_title)
+        pub_date_short = format_pub_date_short(entry)
 
         if info:
-            pub_date_short = format_pub_date_short(entry)
-            title_text = format_title(info, pub_date_short)
+            title_text = format_title_line(info)
+            desc_text = format_description_line(info, pub_date_short)
         else:
             title_text = raw_title
+            desc_text = pub_date_short or raw_title
 
         item = doc.createElement("item")
 
         item.appendChild(el("title", title_text))
+
+        link_url = entry.get("link", "")
+        if link_url:
+            item.appendChild(el("link", link_url))
 
         if test_mode:
             pub_date_rfc = now.strftime("%a, %d %b %Y %H:%M:%S GMT")
@@ -189,7 +198,7 @@ def build_rss_xml(entries: list, test_mode: bool = False) -> str:
             pub_date_rfc = format_pub_date_gmt(entry)
         item.appendChild(el("pubDate", pub_date_rfc))
 
-        guid_value = entry.get("id") or entry.get("link", "")
+        guid_value = entry.get("id") or link_url
         if test_mode:
             test_ts = now.strftime("%Y%m%dT%H%M%S")
             guid_value = f"test-{test_ts}-{guid_value}"
@@ -199,7 +208,7 @@ def build_rss_xml(entries: list, test_mode: bool = False) -> str:
         item.appendChild(guid_node)
 
         desc_node = doc.createElement("description")
-        desc_node.appendChild(doc.createCDATASection(title_text))
+        desc_node.appendChild(doc.createCDATASection(desc_text))
         item.appendChild(desc_node)
 
         channel.appendChild(item)
