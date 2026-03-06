@@ -36,6 +36,7 @@ jobs:
       - name: Generate filtered RSS feed
         env:
           BARK_KEY: ${{ secrets.BARK_KEY }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         run: |
           ARGS=""
           if [ "${{ github.event.inputs.test }}" = "true" ]; then

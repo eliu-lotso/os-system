@@ -223,6 +223,22 @@ def send_bark(title: str, body: str):
         print(f"[BARK] Push failed: {e}")
 
 
+def send_slack(title: str, body: str):
+    webhook_url = os.getenv("SLACK_WEBHOOK")
+    if not webhook_url:
+        print("[SLACK] No SLACK_WEBHOOK set, skipping push.")
+        return
+    payload = {
+        "text": f"*{title}*\n{body}",
+    }
+    try:
+        r = requests.post(webhook_url, json=payload, timeout=10)
+        r.raise_for_status()
+        print("[SLACK] Push sent successfully.")
+    except Exception as e:
+        print(f"[SLACK] Push failed: {e}")
+
+
 def build_bark_summary(entries: list) -> tuple:
     """Build a concise BARK notification from a list of entries."""
     lines = []
@@ -276,15 +292,17 @@ def main():
     ]
 
     if truly_new:
-        print(f"  {len(truly_new)} new item(s) detected, sending BARK push.")
+        print(f"  {len(truly_new)} new item(s) detected, sending push.")
         title, body = build_bark_summary(truly_new)
         send_bark(title, body)
+        send_slack(title, body)
     elif args.test:
-        print("  Test mode: sending BARK push for all items.")
+        print("  Test mode: sending push for all items.")
         title, body = build_bark_summary(all_entries)
         send_bark(title, body)
+        send_slack(title, body)
     else:
-        print("  No new items, skipping BARK push.")
+        print("  No new items, skipping push.")
 
 
 if __name__ == "__main__":
