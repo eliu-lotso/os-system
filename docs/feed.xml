@@ -6,11 +6,11 @@
     <description>iOS, macOS, iPadOS, watchOS — 正式版与测试版更新推送</description>
     <atom:link href="https://eliu-lotso.github.io/os-rss/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>RSS 测试推送 - 如果你看到这条说明订阅成功</title>
+      <title>Apple OS (03-06 02:43)</title>
       <link>https://developer.apple.com/news/releases/</link>
-      <pubDate>Fri, 06 Mar 2026 02:55:00 GMT</pubDate>
-      <guid isPermaLink="false">os-test-20260306T025500</guid>
-      <description><![CDATA[这是一条测试消息，用于验证 RSS 订阅是否正常工作。如果你在阅读器中看到这条内容，说明订阅已经成功！]]></description>
+      <pubDate>Fri, 06 Mar 2026 02:43:09 GMT</pubDate>
+      <guid isPermaLink="false">os-20260306T024309</guid>
+      <description><![CDATA[iOS 26.4 beta 3 v.2 (23E5223k) / iPadOS 26.4 beta 3 v.2 (23E5223k) / watchOS 26.4 beta 3 v.2 (23T5226i) / iOS 26.3.1 | 正式版 / iPadOS 26.3.1 | 正式版 / macOS 26.3.1 | 正式版 / macOS 26.4 Beta 3 | 测试版]]></description>
     </item>
   </channel>
 </rss>
