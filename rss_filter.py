@@ -19,7 +19,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 CONFIG_PATH = SCRIPT_DIR / "feeds.yml"
 OUTPUT_DIR = SCRIPT_DIR / "docs"
 OUTPUT_PATH = OUTPUT_DIR / "feed.xml"
-FEED_URL = "https://eliu-lotso.github.io/os-system/feed.xml"
+FEED_URL = "https://eliu-lotso.github.io/os-rss/feed.xml"
 
 
 def load_config():
