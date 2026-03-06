@@ -181,6 +181,7 @@ def build_rss_xml(entries: list, test_mode: bool = False) -> str:
 
     item = doc.createElement("item")
     item.appendChild(el("title", f"Apple OS ({now.strftime('%m-%d %H:%M')})"))
+    item.appendChild(el("link", "https://developer.apple.com/news/releases/"))
     item.appendChild(el("pubDate", pub_date_rfc))
 
     guid_node = doc.createElement("guid")
