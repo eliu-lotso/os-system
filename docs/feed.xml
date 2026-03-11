@@ -6,6 +6,13 @@
     <description>iOS, macOS, iPadOS, watchOS — 正式版与测试版更新推送</description>
     <atom:link href="https://eliu-lotso.github.io/os-rss/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>[测试] Apple OS 推送测试 (03-11 03:25:30)</title>
+      <link>https://developer.apple.com/news/releases/</link>
+      <pubDate>Wed, 11 Mar 2026 03:25:30 GMT</pubDate>
+      <guid isPermaLink="false">os-test-20260311T032530</guid>
+      <description><![CDATA[这是一条测试推送]]></description>
+    </item>
+    <item>
       <title>[测试] Apple OS 推送测试 (03-11 03:13:31)</title>
       <link>https://developer.apple.com/news/releases/</link>
       <pubDate>Wed, 11 Mar 2026 03:13:31 GMT</pubDate>
