@@ -1,1 +1,22 @@
-<?xml version="1.0" ?><rss version="2.0"><channel><title>Apple OS Releases</title></channel></rss>
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apple OS Releases</title>
+    <link>https://eliu-lotso.github.io/os-rss/feed.xml</link>
+    <description>iOS, macOS, iPadOS, watchOS — 正式版与测试版更新推送</description>
+    <atom:link href="https://eliu-lotso.github.io/os-rss/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Apple OS 更新 (5) — 2026-03-11</title>
+      <link>https://developer.apple.com/news/releases/</link>
+      <pubDate>Wed, 11 Mar 2026 04:13:45 GMT</pubDate>
+      <guid isPermaLink="false">os-batch-26a8056476a4</guid>
+      <description><![CDATA[━━ 正式版 ━━
+▸ macOS 26.3.2  (25D2140) — 仅限 MacBook Neo
+━━ 测试版 ━━
+▸ iOS 26.4 Beta 4  (23E5234a)
+▸ iPadOS 26.4 Beta 4  (23E5234a)
+▸ macOS 26.4 Beta 4  (25E5233c)
+▸ watchOS 26.4 Beta 4  (23T5236a)]]></description>
+    </item>
+  </channel>
+</rss>
