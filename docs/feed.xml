@@ -6,10 +6,10 @@
     <description>iOS, macOS, iPadOS, watchOS — 正式版与测试版更新推送</description>
     <atom:link href="https://eliu-lotso.github.io/os-rss/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>Apple OS (03-22 07:55)</title>
+      <title>Apple OS (03-22 08:31)</title>
       <link>https://developer.apple.com/news/releases/</link>
-      <pubDate>Sun, 22 Mar 2026 07:55:58 GMT</pubDate>
-      <guid isPermaLink="false">os-20260322T075558</guid>
+      <pubDate>Sun, 22 Mar 2026 08:31:40 GMT</pubDate>
+      <guid isPermaLink="false">os-20260322T083140</guid>
       <description><![CDATA[iOS 26.4 Rc | 测试版 / iPadOS 26.4 Rc | 测试版 / macOS 26.4 Rc | 测试版 / watchOS 26.4 Rc | 测试版]]></description>
     </item>
   </channel>
